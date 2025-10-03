@@ -15,10 +15,13 @@ while (currentFolders.Count > 0)
     foreach (var currentFolder in currentFolders)
     {
         string[] allFiles;
-        try {
+        try
+        {
             allFiles = Directory.GetFiles(currentFolder);
-        } catch {
-            continue;
+        }
+        catch
+        {
+            allFiles = [];
         }
 
         var validFiles = allFiles
@@ -40,12 +43,15 @@ while (currentFolders.Count > 0)
         searchedFiles += validFiles.Length;
 
         string[] allFolders;
-        try {
+        try
+        {
             allFolders = Directory.GetDirectories(currentFolder);
-        } catch {
-            continue;
         }
-        
+        catch
+        {
+            allFolders = [];
+        }
+
         var validFolders = allFolders
             .Where(folder => !skip.Skipped(folder))
             .OrderByDescending(t => t);
