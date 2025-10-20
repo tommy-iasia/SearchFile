@@ -22,6 +22,7 @@ while (currentFolders.Count > 0)
         catch
         {
             allFiles = [];
+            await logger.LogAsync($"Failed to get files from {currentFolder}");
         }
 
         var validFiles = allFiles
@@ -50,6 +51,7 @@ while (currentFolders.Count > 0)
         catch
         {
             allFolders = [];
+            await logger.LogAsync($"Failed to get folders from {currentFolder}");
         }
 
         var validFolders = allFolders
